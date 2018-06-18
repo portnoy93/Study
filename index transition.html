@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transitions</title>
+    <style>
+        .container{
+            overflow: hidden;
+            transition: margin-left 0,7s;
+
+
+        }
+    </style>
+</head>
+<body>
+    <section id="container">
+        
+    </section>
+    <script>
+        function createImg( url , width , height ){
+            var widthOk = width != null;
+            var heightOk = height != null;
+            var isOk = widthOk == true && heightOk == true;
+            if(isOk == true){
+                img.width= width;
+                img.height= height;
+            }else{debugger}
+            
+            //crear img 
+            var img = document.createElement("img");
+            //asignarle url al src de img
+            img.src = url;
+            //devolver img 
+            return img;
+        }
+        //tomar imagen desde funcion
+        //var imagen = createImg("");
+        //agregar imagen a body
+        //document.body.appendChild(imagen);
+        
+
+
+        //declarar array de imagenes
+        var imagenlist=new Array();
+        
+        //meter imagenes en array
+        imagenlist[0] = "img/strahd.jpg";
+        imagenlist[1] = "img/concierto1.jpg";
+        imagenlist[2] = "img/concierto2.jpg";
+        imagenlist[3] = "img/concierto3.jpg";
+        imagenlist[4] = "img/concierto4.jpg";
+        imagenlist[5] = "img/concierto5.jpg";
+        
+
+        function meterImagenes ( lista  ){
+        //iterar un array
+        var length = lista.length;
+        var item;
+        var ul= document.createElement("ul")
+        var li;
+        var a;
+        var container = document.getElementById("container");
+        for(var index = 0; index < length; index++){
+            //tomar imagen de array
+            var imagen = createImg(imagenlist[index], 600 , 400 );
+            //por cada elemento
+            //crea li
+            a = document.createElement("a");
+            li = document.createElement("li");
+            //obtener valor item
+            item = lista[index];
+            //asignar el valor del item al li
+            li.appendChild(a);
+            a.appendChild(imagen);
+            //agregar al ul
+            ul.appendChild(li);
+            //agregar a section
+            container.appendChild(ul);
+            }
+            return ul;
+        }    
+        
+        meterImagenes(imagenlist);
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eventos</title>
+    <style>
+        *{
+            background-color: rgb(165, 49, 49);
+        }
+        p{
+            color: cornflowerblue;
+            text-align: center;
+        }
+        .boton{
+            background-color: darkorange;
+            color:antiquewhite; 
+            margin: 10px;
+        }
+        section section{
+            margin-left: 45%;
+        }
+    </style>   
+</head>
+<body>
+    <section>
+        <p id="text">Hola soy un texto</p>
+        <section>
+            <button id="prv"  class="boton">Prev </button>
+            <button id="nxt"  class="boton">Next </button>
+        </section>    
+    </section>
+    <script src="utils.js"></script>
+    <script src="IndexManager.js"></script>
+    <script src="EventManager.js"></script>
+    <script>
+        //crear un array de frases
+        var frasesList = [
+
+             "For those about to rock, we salute you"
+            ,"Fly beyond the realms of space and time"
+            ,"Vengan todos, aqui hay un lugar, junto a la brigada del metal"
+            ,"Omae wa mou shindeiru"
+            ,"Hasta la vista, baby"
+            ]
+        //obtener id de texto
+        var texto = document.getElementById("text");
+        //obtener id de botones
+        var botPrev = document.getElementById("prv");
+        var botNext = document.getElementById("nxt");
+
+        
+        var listalength = frasesList.length;
+        
+        //crear funcion para cambiar frase
+        function cambiarFraseNXT(){
+           indexmanager.next();
+        }
+        function cambiarFrasePRV(){
+            indexmanager.prev();
+        }
+
+        function cambiarFraseByIndex(event){
+            texto.innerHTML = frasesList[event.data.index];        
+        }
+        
+        var indexmanager= new IndexManager();
+        indexmanager.setLength(listalength);
+ 
+        indexmanager.isLoop = true;
+        indexmanager.addEventListener("change",cambiarFraseByIndex);
+        
+
+
+        botNext.addEventListener("click",cambiarFraseNXT);
+        botPrev.addEventListener("click",cambiarFrasePRV);
+
+        
+        
+    </script>
+</body>
+</html>

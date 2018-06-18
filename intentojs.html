@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Concierto Vorgrum - WildLand Fest 2014</title>
+    <style>
+        body{
+            background-color: #2d2d2d
+            }
+        .txt{
+            color: red;
+            text-align: center;
+        }
+        #imagen{
+            width: 1024px;
+            height: 768px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="txt">Concierto Vorgrum - WildLand Fest 2014</h1>
+    <img src="" id="imagen">
+    <p class="txt"style="font-size: 20px">
+        Estas son algunas imagenes del concierto de Vorgrum en el primer WildLand Fest
+    </p>
+    <script>
+        //hacer funcion de transicion
+        function cambiarImagen() {
+            // Decalarar y asignar a url sacando el valor del array usando index
+            var url = imagenlist[index];
+
+            //asignar url a src de imagen
+            imagen.src = url;
+            
+            //sumar 1 a index
+            index++; // index = index + 1; // index += 1;
+            
+            //si index es = o mayor a length de array, asignar 0
+            if(index >= imagenlist.length){
+                index = 0;
+            }
+        }
+
+        //declarar array de imagenes
+        var imagenlist=new Array();
+        
+        //meter imagenes en array
+        imagenlist[0] = "img/concierto1.jpg";
+        imagenlist[1] = "img/concierto2.jpg";
+        imagenlist[2] = "img/concierto3.jpg";
+        imagenlist[3] = "img/concierto4.jpg";
+        imagenlist[4] = "img/concierto5.jpg";
+
+        //obetener referencia de img    
+        var imagen = document.getElementById("imagen");
+
+        //crea variable indice e inicializar en 0
+        var index = 0;
+
+        //llamar a transicion cada x milisegundos
+        setInterval(cambiarImagen, 2500);
+    </script>
+</body>
+</html>

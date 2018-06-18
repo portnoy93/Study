@@ -1,0 +1,101 @@
+
+<html>	
+	<head>
+		<style>
+		
+		</style>	
+	</head>
+
+
+	<body>
+		
+		<script>	
+			var pregunta1 ='Como se dice "hola" en japones?';
+			var respuesta1ok ="konnichiha";
+            var pregunt= 0;
+            var preguntotal= 4;
+			var respuesta1 = prompt( "Pregunta"+(pregunt+1)+"/"+preguntotal+" -"+ pregunta1);
+            var counterok=0; 
+            
+            //para saber respuestas incorrectas sin usar variable extra
+            //restar resp correctas al total de preguntas
+            
+            
+			var esRespuestaCorrecta1 = respuesta1.toLowerCase()==respuesta1ok.toLowerCase();
+			
+			if (esRespuestaCorrecta1) {
+						alert("Respondiste bien");
+						counterok++;
+                        pregunt++;
+				}else{ 
+					alert("Respondiste mal");    
+                    
+                    pregunt++;
+				}
+            
+
+            var pregunta2 ='Como se dice "avion" en japones?';
+			var respuesta2ok ="hikoki";
+			var respuesta2 = prompt("Pregunta"+(pregunt+1)+"/"+preguntotal+" -"+ pregunta2);
+
+			var esRespuestaCorrecta2 = respuesta2.toLowerCase()==respuesta2ok.toLowerCase();
+			
+			if (esRespuestaCorrecta2) {
+						alert("Respondiste bien");
+						counterok++;
+                        pregunt++;
+				}else{ 
+					alert("Respondiste mal");
+                   
+                    pregunt++;
+				}
+						
+            var pregunta3 ='Como se dice "subte" en japones?';
+			var respuesta3ok ="chikatetsu";
+			var respuesta3 = prompt("Pregunta"+(pregunt+1)+"/"+preguntotal+" -"+ pregunta3);
+
+			var esRespuestaCorrecta3 = respuesta3.toLowerCase()==respuesta3ok.toLowerCase();
+			
+			if (esRespuestaCorrecta3) {
+						alert("Respondiste bien");
+						counterok++;
+                        pregunt++;
+						
+				}else{ 
+					alert("Respondiste mal");
+                    
+                    pregunt++;
+				}			
+            
+            
+            var pregunta4 ='Como se dice "automovil" en japones?';
+			var respuesta4ok ="kuruma";
+			var respuesta4 = prompt("Pregunta"+(pregunt+1)+"/"+preguntotal+" -"+ pregunta4);
+
+			var esRespuestaCorrecta4 = respuesta4.toLowerCase()==respuesta4ok.toLowerCase();
+			
+			if (esRespuestaCorrecta4) {
+						alert("Respondiste bien");
+						counterok++;
+                        pregunt++;
+						
+				}else{ 
+					alert("Respondiste mal");
+                    
+                    pregunt++;
+				}	
+               //para sacar promedio hacer regla de 3 entre res correctas y total de preguntas
+                var promedio= (counterok*100)/preguntotal; 
+                var counterfail=preguntotal-counterok;  
+                alert(
+                    "Preguntas respondidas:" +" " +pregunt + "      " +
+                    "Respuestas correctas:"+" " +counterok + "                   " +
+                    "       Respuestas incorrectas:"+" " +counterfail + "         "+
+                    "  Porcentaje de efectividad:"+ " "+ promedio + "%" +" " 
+                                     
+                 );
+				
+		</script>
+		
+	</body>
+</html>	

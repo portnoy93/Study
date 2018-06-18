@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eventos</title>
+    <style>
+        *{
+            background-color: rgb(165, 49, 49);
+        }
+        p{
+            color: cornflowerblue;
+            text-align: center;
+        }
+        .boton{
+            background-color: darkorange;
+            color:antiquewhite; 
+            margin: 10px;
+        }
+        section section{
+            margin-left: 45%;
+        }
+    </style>   
+</head>
+<body>
+    <section>
+        <p id="text">Hola soy un texto</p>
+        <section>
+            <button id="prv"  class="boton">Prev </button>
+            <button id="nxt"  class="boton">Next </button>
+        </section>    
+    </section>
+    
+    <script src="IndexManager.js"></script>
+    <script src="EventManager.js"></script>
+    <script>
+        //crear un array de frases
+        var frasesList = [
+
+             "For those about to rock, we salute you"
+            ,"Fly beyond the realms of space and time"
+            ,"Vengan todos, aqui hay un lugar, junto a la brigada del metal"
+            ,"Omae wa mou shindeiru"
+            ,"Hasta la vista, baby"
+            ]
+        //obtener id de texto
+        var texto = document.getElementById("text");
+        //obtener id de botones
+        var botPrev = document.getElementById("prv");
+        var botNext = document.getElementById("nxt");
+
+        var index = 0;
+        var listalength = frasesList.length;
+        //crear funciones para cambiar frase
+        function cambiarFraseNXT(){
+            //aumentar el index
+            index++; 
+            //si termina lista, volver a empezar
+            if(index == listalength){
+                index = 0;
+            }
+            //enlazar texto con array
+            texto.innerHTML = frasesList[index];
+        }
+        function cambiarFrasePRV(){
+            //reducir index
+            index--;   
+            if(index == -1){
+                index = listalength-1;
+            }
+           //enlazar texto con array
+           texto.innerHTML = frasesList[index];
+        }
+        
+        botNext.onclick = cambiarFraseNXT;
+        botPrev.onclick = cambiarFrasePRV;
+
+
+        
+        
+    </script>
+</body>
+</html>

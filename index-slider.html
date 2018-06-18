@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slider</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        body{
+            background-color: #2d2d2d;
+            }
+        h1{
+            color: #1381ff;
+            position: relative;
+            text-align: center;
+        }
+        ul {
+            transition: all 0.7s;
+            width: 2000px;
+           
+        }
+        section{
+            width: 400px;
+            height: 400px; 
+            overflow: hidden;
+            margin-left: 35%;
+            margin-top: 20px;
+           
+        }
+        ul li{
+            list-style-type: none;
+            float: left;
+            /*position: relative;
+            left: 100px;   */
+        }
+        li, li img{
+            
+            width: 400px;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Gamma Ray Discography</h1>
+    <section>
+        <ul id="ulbanda">
+            <li><img src="img/1-heading for tomorrow.jpg"></li>
+            <li><img src="img/2-sigh no more.jpg"></li>
+            <li><img src="img/3-insanity and genius.jpg"></li>
+            <li><img src="img/4-land of the free.jpg"></li>
+            <li><img src="img/5-somewhere out in space.jpg"></li>
+        </ul>
+    </section>
+    <script src="utils.js"></script>
+    <script src="EventManager.js"></script>
+    <script src="IndexManager.js"></script>
+    <script>
+        var ul = document.getElementById("ulbanda");
+      
+        var width = 400;        
+        var totalImages = ul.getElementsByTagName("li").length;
+        //setear total width
+        var total= 2000;
+
+        function mover(index){
+            //a medida que index aumenta
+            //se resta INDEX multiplicado por width de img
+            var posicion = -(index * width) + "px";
+            ul.style.marginLeft = posicion;
+            if (index <= totalImages){
+                index++;
+            }else{ index = 0;}
+        }
+       
+        function onIndexChange(event){
+            
+            var index = event.data.index;
+            console.log(index);
+            mover (index);
+
+        }
+
+        var indexManager = new IndexManager();
+        indexManager.setLength(totalImages);
+        
+        indexManager.addEventListener("change", onIndexChange);
+        indexManager.isLoop = true;
+        setInterval(indexManager.next, 1000)
+
+    </script>
+</body>
+</html>
