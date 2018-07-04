@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form>
+		<input type="text" id="agrega">
+		<input type="button" value="Agregar" id="sumar">
+	</form>
+	<ul id="elementos">	
+	</ul>
+	<script>
+		document.getElementById("sumar").addEventListener("click", function(){
+				let elemento = document.getElementById("agrega").value;
+				if(elemento.length >= 4){
+					document.getElementById("elementos").insertAdjacentHTML('beforeend', `<li>${elemento}</li>` );
+				}
+			});
+	</script>
+</body>
+</html>

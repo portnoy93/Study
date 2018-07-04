@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#error{color:red;}
+	</style>
+</head>
+<body>
+	<div id="error"></div>
+	<script>
+		const errar = (err) =>document.getElementById("error").innerHTML = "Ha ocurrido un error: "+err;				
+		errar("inesperado");
+	</script>
+</body>
+</html>

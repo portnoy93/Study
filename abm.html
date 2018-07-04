@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#mensaje{position:fixed;left:0;width: 100%;bottom:0;text-align: center;font-size:3em;}
+		.red{color: red;font-weight: bold;}
+		.green{color: green;font-weight: bold;}
+	</style>
+</head>
+<body>
+	<form>
+		<label>Producto</label>
+		<input type="text" id="producto">
+		<input type="button" id="agregar" value="Agregar">
+		<input type="button" id="deshacer" value="Deshacer">
+	</form>
+	
+	<ul id="resultado">		
+	</ul>
+	<div id="mensaje">
+		
+	</div>
+	<script>
+	const productos = [];
+	class Producto {  	
+	  	mostrar() {
+	  		this.resultado ="";
+	  		productos.forEach((value)=> {	  			
+  				this.resultado += `<li>${value}</li>`;
+			});
+			console.log(productos)
+	    	return this.resultado;
+	  	}
+		agregar(){
+			this.producto = document.querySelector("#producto").value;
+			if(this.producto.length >= 4 ){
+				this.encontrado = productos.find((element)=> element === this.producto);
+				//Si lo encuentra, this.encontrado tiene lo mismo que this.producto
+				if(this.encontrado !== this.producto){	
+				productos.push(this.producto);			
+					document.querySelector("#mensaje").innerHTML= `<p class="green">Agegado el elemento ${this.producto}<p>`;				
+					document.querySelector("#producto").value = "";
+				}
+				else{
+					document.querySelector("#mensaje").innerHTML= `<p class="red">El elemento ${this.producto} ya existia<p>`;					
+				}
+			}
+			else{
+				document.querySelector("#mensaje").innerHTML= `<p class="red">El elemento ${this.producto} debe tener al menos 4 caracteres<p>`;	
+			}
+
+			return this.mostrar();
+		}	  	
+		deshacer(){
+			this.quitado = productos.pop();
+			document.querySelector("#mensaje").innerHTML= `<p class="red">Quitado el elemento ${this.quitado}<p>`;
+			return this.mostrar();
+		}
+
+	}
+
+
+	document.querySelector("#agregar").addEventListener('click', () => {		
+		let prod = new Producto;  
+		document.querySelector("#resultado").innerHTML= prod.agregar();		
+	});
+
+	document.querySelector("#deshacer").addEventListener('click', () => {		
+		let prod = new Producto;  
+		document.querySelector("#resultado").innerHTML= prod.deshacer();		
+	});	
+
+	</script>	
+</body>
+</html>

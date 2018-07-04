@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+            
+        
+    </style>
+</head>
+<body>
+    <section>
+        
+        <ul id="notas">
+
+        </ul>
+    </section>
+
+
+    <script>
+        
+        const notas = [7,6,8,3,1,2,5,10]; 
+        
+        class Calificaciones{
+            
+            cantNotas(n){
+                this.cantidad = n.length;   
+                return this.cantidad;
+            }
+            
+            calcMax(n){
+                this.max = Math.max(...n);
+                return this.max;                
+                
+            }
+            
+            calcMin(n){
+                this.min = Math.min(...n);
+                return this.min;                
+                
+            }	  	
+            
+            calcProm(n) {
+	  		//Reduce une los valores de un array
+	  		this.suma = n.reduce((anterior, siguiente) => anterior += siguiente);
+	  		this.promedio = (this.suma/n.length).toFixed(1);
+            return `Cantidad: ${this.cantidad} | Nota Promedio: ${this.promedio}`;
+            }
+	  	}	
+        
+
+        let nota = new Calificaciones;
+        console.log(`Las notas son`,nota.cantNotas(notas));
+        
+        let notmax = new Calificaciones;
+        console.log(`La nota máxima es`,nota.calcMax(notas));
+        
+        let notmin = new Calificaciones;
+        console.log(`La nota mínima es`,nota.calcMin(notas));
+
+        let promd = new Calificaciones;
+        console.log(`Promedios: `,nota.calcProm(notas));
+
+
+
+
+
+    </script>
+</body>
+</html>

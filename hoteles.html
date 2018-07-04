@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const hoteles = [
+		{ nombre: "Hotel 1", precio: 700},
+		{ nombre: "Hotel 2", precio: 900},
+		{ nombre: "Hotel 3", precio: 600},
+		{ nombre: "Hotel 4", precio: 900},
+		{ nombre: "Hotel 5", precio: 500}
+        ];	
+        
+        // .map recorre
+        const max = Math.max(...hoteles.map(h => (h.precio)))
+        const min = Math.min(...hoteles.map(h => h.precio))	
+        
+    	console.log(max);
+		console.log(min);
+        // '?' es if y ':' es else, hay que usarlos juntos si o si o da error 
+		const maxHotel = hoteles.find((hotel) => hotel.precio == min ? console.log(hotel) : null);
+		const minHotel = hoteles.find((hotel) => hotel.precio == max ? console.log(hotel) : null);
+	
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		
+	class Humano {  		  
+	  constructor(nombre, apellido, edad) {
+	    this.nombre = nombre;
+	    this.apellido = apellido;
+	    this.edad   = edad;
+	  }		  
+	  mostrar() {
+	    return `Nombre: ${this.nombre} | Apellido: ${this.apellido} | Edad: ${this.edad}`;
+	  }
+	}
+
+	class Socio extends Humano {  
+	  constructor(nombre, apellido, edad, ncarnet, habilitado) {
+	    super(nombre, apellido, edad);
+	    this.ncarnet = ncarnet;
+	    this.habilitado = habilitado;
+	  }
+
+	  mostrardatossocio() {
+	  	if(this.habilitado === true){
+	  		var pasa = 'SI';
+	  	}
+	  	else{
+	  		var pasa = 'NO';	
+	  	}
+	    return super.mostrar() + ` | Carnet: ${this.ncarnet} | Pasa: ${pasa}`;
+	  }
+	}
+	document.addEventListener('DOMContentLoaded', iniciar);
+	
+	function iniciar(){
+		var dami = new Socio('Damian','De', 40, '11233',true);  
+		document.querySelector("#datos").innerHTML= dami.mostrardatossocio();
+	}
+	</script>
+</head>
+<body>
+	<h1>Datos del socio</h1>
+	<p id="datos"></p>
+</body>
+</html>

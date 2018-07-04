@@ -1,0 +1,12 @@
+<script>
+	const edades = [11,24,5,8];
+	const edadesordenadas = edades.sort(function(a,b){
+		return a-b; // Menor a mayor
+	});
+	console.log(edadesordenadas);
+	
+	const edadesordenadas_es6 = edades.sort((a,b)=>b-a); // Mayor a menor
+	console.log(edadesordenadas_es6);
+	
+</script>
+</html>

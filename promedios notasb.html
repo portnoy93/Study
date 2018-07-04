@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promediosb</title>
+    <style>
+        
+            
+        
+    </style>
+</head>
+<body>
+    <section>
+        <input type="text" id="agregNot" >
+        <input type="button" value="Agregar" id="agregar"></button>
+        <p id="notap"></p>
+        <p id="msg"></p>
+
+        
+    </section>
+
+
+    <script>
+        
+        const notas = []; 
+        
+        class Calificaciones{
+            
+            agregarNota(n){
+                this.newnote = parseInt(document.getElementById("agregNot").value);
+                if(this.newnote >= 1 && this.newnote <= 10){
+                    n.push(this.newnote)
+                    document.getElementById("msg").innerHTML ="";
+                }else{ 
+                    document.getElementById("msg").innerHTML = `El numero ${this.newnote} no cumple con los requisitos`;
+                }
+                console.log(n);
+                return n.length;
+            }
+
+
+            cantNotas(n){
+                this.cantidad = n.length;   
+                return this.cantidad;
+            }
+            
+            calcMax(n){
+                this.max = Math.max(...n);
+                return this.max;                
+                
+            }
+            
+            calcMin(n){
+                this.min = Math.min(...n);
+                return this.min;                
+                
+            }	  	
+            
+            calcProm(n) {
+	  		//Reduce une los valores de un array
+	  		this.suma = n.reduce((anterior, siguiente) => anterior += siguiente);
+	  		this.promedio = (this.suma/n.length).toFixed(1);
+            return `Cantidad: ${this.cantidad} | Nota Promedio: ${this.promedio}`;
+            }
+
+    }	
+        
+        /*
+        let nota = new Calificaciones;
+        console.log(`Las notas son`,nota.cantNotas(notas));
+        
+        let notmax = new Calificaciones;
+        console.log(`La nota máxima es`,nota.calcMax(notas));
+        
+        let notmin = new Calificaciones;
+        console.log(`La nota mínima es`,nota.calcMin(notas));
+
+        let promd = new Calificaciones;
+        console.log(`Promedios: `,nota.calcProm(notas));*/
+
+        document.querySelector("#agregar").addEventListener('click', () => {	
+		let nota = new Calificaciones;
+		let oknotas = nota.agregarNota(notas);
+		if(oknotas > 0){
+            document.getElementById("notap").innerHTML = 
+            `Las notas son `+nota.cantNotas(notas)+
+            `| La nota máxima es `+nota.calcMax(notas)+
+            `| La nota mínima es `+nota.calcMin(notas)+
+            `| Promedios: `+nota.calcProm(notas);
+
+      		// inner html nota.calcMaximo(notas)
+      
+    		}
+	    });  
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>	
+	<form>
+		<label>Notas</label>
+		<input type="number" id="nota">
+		<input type="button" id="agregar" value="Agregar">		
+	</form>	
+	<div id="resultado"></div>
+	<div id="error"></div>
+	<script>
+	const notas = [];
+	
+	class calificaciones {  	
+	  	calcMaximo(n) {
+	  		this.cant = n.length;
+	  		this.max = Math.max(...n);	  		
+	    	return `Cantidad: ${this.cant} | Nota máxima: ${this.max}`;
+	  	}
+	  	calcMin(n) {
+	  		this.cant = n.length;
+	  		this.max = Math.min(...n);	  		
+	    	return `Cantidad: ${this.cant} | Nota máxima: ${this.max}`;
+	  	}	  	
+	  	calcProm(n) {
+	  		//Reduce une los valores de un array
+	  		this.suma = n.reduce((anterior, siguiente) => anterior += siguiente);
+	  		this.promedio = (this.suma/n.length).toFixed(1);
+	    	return `Cantidad: ${this.cant} | Nota Promedio: ${this.promedio}`;
+	  	}	  		
+	  	agregarNota(){			
+			this.notanueva = parseInt(document.getElementById("nota").value);
+			if(this.notanueva <= 10){
+				document.getElementById("nota").value = "";
+				notas.push(this.notanueva);
+				document.getElementById("error").innerHTML = "";
+				return notas.length;
+			}
+			else{
+				document.getElementById("nota").value = "";
+				document.getElementById("error").innerHTML = `El número: ${this.notanueva} no es una nota válida`;
+				return notas.length;
+			}
+	  	}
+	}
+
+
+	document.querySelector("#agregar").addEventListener('click', () => {	
+		let nota = new calificaciones;
+		let oknotas = nota.agregarNota();
+		if(oknotas > 0){
+			document.getElementById("resultado").innerHTML = nota.calcMaximo(notas) + "<br>" + nota.calcMin(notas) + "<br>" + nota.calcProm(notas);
+		}
+	});
+
+	</script>	
+</body>
+</html>

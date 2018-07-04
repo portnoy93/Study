@@ -1,0 +1,17 @@
+<script>
+	let persona = new Map();
+	persona.set("nombre","Dami");
+	persona.set("pais","Argentina");
+	persona.set("edad",40);	
+	console.log(persona);
+	console.log(persona.size);
+	console.log(persona.get("nombre"));
+	console.log(persona.get("pais"));
+	console.log(persona.get("edad"));	
+	console.log(persona.has("edad"));
+	let i = 1;
+	persona.forEach( (valor,clave)=>console.log(i++ +" - "+ clave +" : "+valor));
+	persona.delete("pais");	
+	console.log(persona);
+</script>
+</html>

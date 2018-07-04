@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="comida">
+	<input type="button" value="agregar" onclick="agregar()">
+
+	<script>
+		const comidas = ["Pizza"];
+		function agregar(){
+			let comida = document.getElementById("comida").value;
+			if(!comidas.includes(comida)){
+				comidas.push(comida);
+				console.log(comidas);
+			}
+		}	
+
+	</script>
+</body>
+</html>
